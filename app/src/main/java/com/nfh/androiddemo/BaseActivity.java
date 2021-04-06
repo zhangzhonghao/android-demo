@@ -8,13 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     Unbinder unbinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(initLayout());
         unbinder = ButterKnife.bind(this);
     }
 
@@ -25,4 +26,6 @@ public class BaseActivity extends AppCompatActivity {
             unbinder.unbind();
         }
     }
+
+    protected abstract int initLayout();
 }
